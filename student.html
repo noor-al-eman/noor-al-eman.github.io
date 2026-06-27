@@ -1,103 +1,433 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Student Dashboard</title>
 
-  <style>
+<meta charset="UTF-8">
 
-    body {
-      font-family: Arial;
-      background: #111;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .card {
-      text-align: center;
-    }
+<title>نور الإيمان</title>
 
-    h1 {
-      font-size: 60px;
-      margin: 0;
-    }
 
-    h2 {
-      font-size: 40px;
-      color: #00ff99;
-    }
+<style>
 
-  </style>
+
+@font-face {
+
+  font-family: NoorFont;
+
+  src: url("fonter.otf");
+
+}
+
+
+
+* {
+
+box-sizing:border-box;
+
+}
+
+
+
+body {
+
+
+font-family: NoorFont, Arial;
+
+
+background:#032b24;
+
+
+color:#cacd0c;
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+align-items:center;
+
+
+min-height:100vh;
+
+
+margin:0;
+
+
+padding:20px;
+
+
+direction:rtl;
+
+
+}
+
+
+
+
+
+.card {
+
+
+background:#034d40;
+
+
+width:90%;
+
+
+max-width:500px;
+
+
+padding:35px;
+
+
+border-radius:25px;
+
+
+border:2px solid #cacd0c;
+
+
+text-align:center;
+
+
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+
+
+}
+
+
+
+
+
+h1 {
+
+
+font-size:50px;
+
+
+margin:0 0 25px;
+
+
+color:#cacd0c;
+
+
+}
+
+
+
+
+
+h2 {
+
+
+font-size:28px;
+
+
+line-height:1.8;
+
+
+color:#cacd0c;
+
+
+margin:0;
+
+
+}
+
+
+
+
+
+.info {
+
+
+background:#05594b;
+
+
+padding:20px;
+
+
+border-radius:15px;
+
+
+border:2px solid black;
+
+
+margin-top:20px;
+
+
+font-size:22px;
+
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+
+.card {
+
+
+padding:25px 15px;
+
+
+}
+
+
+
+h1 {
+
+
+font-size:35px;
+
+
+}
+
+
+
+h2 {
+
+
+font-size:22px;
+
+
+}
+
+
+
+.info {
+
+
+font-size:18px;
+
+
+}
+
+
+
+}
+
+
+
+
+
+</style>
+
 
 </head>
 
+
+
 <body>
 
-  <div class="card">
 
-    <h1 id="studentName">
-      Loading...
-    </h1>
 
-    <h2 id="studentPoints">
-      ...
-    </h2>
 
-  </div>
 
-  <script>
+<div class="card">
 
-    const API_URL =
-      "https://script.google.com/macros/s/AKfycbziHTPIKYehe8NEZStkfbh6uWL16TNxnQ9aaa0tXqFM6bpq6hcSupBUg1mIM1EYpnUK/exec";
 
-    const studentName =
-      localStorage.getItem("studentName");
 
-    fetch(API_URL)
-      .then(res => res.json())
-      .then(data => {
 
-        const rows = data.slice(1);
 
-        const student =
-          rows.find(row =>
-            row[0].toLowerCase() ===
-            studentName.toLowerCase()
-          );
+<h1 id="studentName">
 
-        if (student) {
+جاري التحميل...
 
-          document
-            .getElementById("studentName")
-            .innerText = student[0];
+</h1>
 
-          const total = student[1];
+
+
+
+
+<div class="info">
+
+
+<h2 id="studentPoints">
+
+...
+
+
+</h2>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+const API_URL =
+
+"https://script.google.com/macros/s/AKfycbziHTPIKYehe8NEZStkfbh6uWL16TNxnQ9aaa0tXqFM6bpq6hcSupBUg1mIM1EYpnUK/exec";
+
+
+
+
+
+const studentName =
+
+localStorage.getItem("studentName");
+
+
+
+
+
+
+
+fetch(API_URL)
+
+
+.then(res => res.json())
+
+
+.then(data => {
+
+
+
+const rows = data.slice(1);
+
+
+
+
+
+const student =
+
+
+rows.find(row =>
+
+
+row[0].toLowerCase() ===
+
+
+studentName.toLowerCase()
+
+
+);
+
+
+
+
+
+
+if(student){
+
+
+
+
+
+document
+
+.getElementById("studentName")
+
+.innerText = student[0];
+
+
+
+
+
+
+const total = student[1];
+
 const school = student[2];
+
 const project = student[3];
+
 const attendance = student[4] || 0;
+
 const work = student[5] || 0;
+
 const match = student[6] || 0;
 
+
+
+
+
+
+
+
 document.getElementById("studentPoints").innerHTML =
+
+
+
 `
-Total: ${total}<br><br>
 
-Attendance: ${attendance}<br>
-Work: ${work}<br>
-Match: ${match}<br><br>
+مجموع النقاط: ${total}
 
-School: ${school}<br>
-Project: ${project}
+<br><br>
+
+
+الحضور: ${attendance}
+
+<br>
+
+
+التسميع: ${work}
+
+<br>
+
+
+النشاط: ${match}
+
+<br><br>
+
+
+المدرسة: ${school}
+
+<br>
+
+
+الحلقة: ${project}
+
+
+
 `;
-        }
 
-      });
 
-  </script>
+
+
+
+}
+
+
+
+});
+
+
+
+
+
+</script>
+
+
+
+
 
 </body>
+
+
 </html>
