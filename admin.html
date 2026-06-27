@@ -1,18 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin Dashboard</title>
+<title>لوحة التحكم</title>
+
 
 <style>
-/* ===== BASE ===== */
+
+
+@font-face {
+
+  font-family: NoorFont;
+
+  src: url("fonter.otf");
+
+}
+
+
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+
 
 body {
 
-  font-family: Arial;
+  font-family: NoorFont, Arial;
 
   background: #032b24;
 
@@ -22,10 +42,13 @@ body {
 
   color: #cacd0c;
 
+  direction: rtl;
+
+  text-align: right;
+
 }
 
 
-/* ===== HEADER ===== */
 
 h1 {
 
@@ -38,474 +61,1045 @@ h1 {
 }
 
 
-/* ===== CARDS ===== */
+
+
 
 .student {
 
+
   background: #034d40;
+
 
   padding: 12px;
 
+
   margin-top: 10px;
+
 
   border-radius: 12px;
 
+
   border: 2px solid black;
+
 
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 
+
 }
 
 
-/* NAME + TEXT */
+
+
 
 .name {
 
+
   font-size: 18px;
+
 
   font-weight: bold;
 
+
   color: #cacd0c;
 
+
 }
+
+
+
 
 
 .points {
 
+
   font-size: 14px;
+
 
   margin: 6px 0;
 
+
   color: #cacd0c;
+
 
 }
 
 
-/* ===== INPUT TEXT BOXES ===== */
+
+
 
 input {
 
+
   width: 100%;
 
+
   padding: 10px;
+
 
   margin-top: 6px;
 
+
   border-radius: 8px;
 
+
   border: 2px solid black;
+
 
   box-sizing: border-box;
 
+
   color: #cacd0c;
+
 
   background: #034d40;
 
+
 }
 
 
-/* INPUT PLACEHOLDER */
+
+
 
 input::placeholder {
 
+
   color: #cacd0c;
 
-  opacity: 0.8;
 
 }
 
 
-/* ===== SELECT MENUS ===== */
+
+
 
 select {
 
+
   width: 100%;
+
 
   padding: 10px;
 
+
   margin-top: 8px;
+
 
   border-radius: 10px;
 
+
   border: 2px solid black;
+
 
   font-size: 16px;
 
+
   font-weight: 600;
+
 
   cursor: pointer;
 
+
 }
 
-/* ===== BUTTONS ===== */
+
+
+
 
 button {
 
+
   width: 100%;
+
 
   padding: 10px;
 
+
   margin-top: 8px;
+
 
   border: 2px solid black;
 
+
   border-radius: 8px;
+
 
   color: white;
 
+
   font-size: 14px;
+
 
 }
 
 
-/* BUTTON COLORS */
+
+
 
 .save {
 
-  background: rgb(15, 80, 64);
+
+  background: rgb(15,80,64);
+
 
 }
+
+
+
 
 
 .logout {
 
-  background: black;
+
+  background:black;
+
 
 }
+
+
+
 
 
 .addStudent {
 
-  background: rgb(10, 117, 94);
+
+  background:rgb(10,117,94);
+
 
 }
 
 
-/* ===== TOP SECTION ===== */
+
+
 
 .topBox {
 
-  background: #034d40;
 
-  padding: 12px;
+  background:#034d40;
 
-  border-radius: 12px;
 
-  margin-bottom: 12px;
+  padding:12px;
 
-  border: 2px solid black;
 
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  border-radius:12px;
+
+
+  margin-bottom:12px;
+
+
+  border:2px solid black;
+
 
 }
 
 
-/* ===== LABELS ===== */
+
+
 
 label {
 
-  color: #cacd0c;
 
-  font-weight: bold;
+  color:#cacd0c;
+
+
+  font-weight:bold;
+
 
 }
 
 
-/* ===== HR ===== */
+
+
 
 hr {
 
-  border-color: black;
+
+ border-color:black;
+
 
 }
 
 
-/* ===== RESPONSIVE ===== */
-
-@media (min-width: 700px) {
 
 
-  body {
 
-    max-width: 800px;
-
-    margin: auto;
-
-  }
+@media (min-width:700px){
 
 
-  button {
 
-    width: auto;
-
-    padding: 10px 15px;
-
-  }
+body {
 
 
-  input {
-
-    width: auto;
-
-  }
+max-width:800px;
 
 
-  select {
+margin:auto;
 
-    width: auto;
-
-  }
 
 }
+
+
+
+
+
+button {
+
+
+width:auto;
+
+
+padding:10px 15px;
+
+
+}
+
+
+
+
+
+input {
+
+
+width:auto;
+
+
+}
+
+
+
+
+
+select {
+
+
+width:auto;
+
+
+}
+
+
+
+}
+
+
+
+
+
 </style>
+
 </head>
+
+
 
 <body>
 
+
 <script>
-if (localStorage.getItem("admin") !== "true") {
-  window.location.href = "index.html";
+
+if(localStorage.getItem("admin") !== "true"){
+
+window.location.href="index.html";
+
 }
+
 </script>
 
-<h1>Admin Dashboard</h1>
 
-<button class="logout" onclick="logout()">Logout</button>
 
-<!-- ADD STUDENT -->
+
+
+<h1>لوحة التحكم</h1>
+
+
+
+
+
+<button class="logout" onclick="logout()">
+
+تسجيل الخروج
+
+</button>
+
+
+
+
+
+
+
 <div class="topBox">
 
-  <h3>Add Student</h3>
 
-  <input id="newName" placeholder="Student name">
-  <input id="newPoints" type="number" placeholder="Points">
-  <input id="newSchool" placeholder="School">
-  <input id="newProject" placeholder="Last Project">
 
-  <button class="addStudent" onclick="addStudent()">
-    Add Student
-  </button>
+<h3>إضافة طالب</h3>
+
+
+
+
+
+<input id="newName" placeholder="اسم الطالب">
+
+
+
+
+
+<input id="newPoints" type="number" placeholder="النقاط">
+
+
+
+
+
+<input id="newSchool" placeholder="المدرسة">
+
+
+
+
+
+<input id="newProject" placeholder="آخر مشروع">
+
+
+
+
+
+
+
+<button class="addStudent" onclick="addStudent()">
+
+
+إضافة طالب
+
+
+</button>
+
+
 
 </div>
 
-<!-- STUDENTS -->
+
+
+
+
+
+
+
+
 <div id="students"></div>
 
+
+
+
+
+
+
 <button class="save" onclick="saveAllChanges()">
-  Save All Changes
+
+
+حفظ التغييرات
+
+
 </button>
+
+
+
+
+
+
+
 
 <script>
 
+
+
+
+
 const API_URL =
+
 "https://script.google.com/macros/s/AKfycbziHTPIKYehe8NEZStkfbh6uWL16TNxnQ9aaa0tXqFM6bpq6hcSupBUg1mIM1EYpnUK/exec";
 
-let students = [];
 
-/* LOAD */
-function loadStudents() {
+
+
+
+let students=[];
+
+
+
+
+
+
+
+
+function loadStudents(){
+
+
 
 fetch(API_URL)
-.then(res => res.json())
-.then(data => {
 
-students = data.slice(1);
 
-const container = document.getElementById("students");
-container.innerHTML = "";
+.then(res=>res.json())
 
-students.forEach((row, i) => {
 
-const name = row[0];
-const total = Number(row[1]) || 0;
-const school = row[2] || "";
-const project = row[3] || "";
-const attendance = Number(row[4]) || 0;
-const work = Number(row[5]) || 0;
-const match = Number(row[6]) || 0;
+.then(data=>{
 
-const div = document.createElement("div");
-div.className = "student";
 
-div.innerHTML = `
-  <div class="name">${name}</div>
 
-  <div class="points">مجموع النقاط: ${total}</div>
 
-  <input id="school-${i}" value="${school}" placeholder="اخر اختبار">
-  <input id="project-${i}" value="${project}" placeholder="الحلقه">
 
-  <hr style="margin:10px 0; opacity:0.3">
+students=data.slice(1);
 
-  <label>Attendance</label>
-  <select id="attendance-${i}" onchange="changeAttendanceColor(this)">
-  <option value="5" ${attendance==5?"selected":""}>حاضر</option>
-  <option value="3" ${attendance==3?"selected":""}>متاخر</option>
-  <option value="0" ${attendance==0?"selected":""}>غائب</option>
+
+
+
+
+const container=document.getElementById("students");
+
+
+
+container.innerHTML="";
+
+
+
+
+
+
+
+students.forEach((row,i)=>{
+
+
+
+
+
+const name=row[0];
+
+
+const total=Number(row[1])||0;
+
+
+const school=row[2]||"";
+
+
+const project=row[3]||"";
+
+
+const attendance=Number(row[4])||0;
+
+
+const work=Number(row[5])||0;
+
+
+const match=Number(row[6])||0;
+
+
+
+
+
+
+
+
+
+const div=document.createElement("div");
+
+
+div.className="student";
+
+
+
+
+
+
+
+div.innerHTML=`
+
+
+
+<div class="name">${name}</div>
+
+
+
+
+
+<div class="points">
+
+مجموع النقاط: ${total}
+
+</div>
+
+
+
+
+
+
+
+<input id="school-${i}" value="${school}" placeholder="آخر اختبار">
+
+
+
+
+
+<input id="project-${i}" value="${project}" placeholder="الحلقة">
+
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+
+<label>الحضور</label>
+
+
+
+
+
+<select id="attendance-${i}" onchange="changeAttendanceColor(this)">
+
+
+
+
+
+<option value="5" ${attendance==5?"selected":""}>
+
+حاضر
+
+</option>
+
+
+
+
+
+<option value="3" ${attendance==3?"selected":""}>
+
+متأخر
+
+</option>
+
+
+
+
+
+<option value="0" ${attendance==0?"selected":""}>
+
+غائب
+
+</option>
+
+
+
+
+
 </select>
 
-  <label>Work</label>
-  <select id="work-${i}" onchange="changeWorkColor(this)">
-  <option value="5" ${work==5?"selected":""}>سمع</option>
-  <option value="0" ${work==0?"selected":""}>لم يسمع</option>
+
+
+
+
+
+
+
+
+<label>التسميع</label>
+
+
+
+
+
+<select id="work-${i}" onchange="changeWorkColor(this)">
+
+
+
+
+
+<option value="5" ${work==5?"selected":""}>
+
+سمع
+
+</option>
+
+
+
+
+
+<option value="0" ${work==0?"selected":""}>
+
+لم يسمع
+
+</option>
+
+
+
+
+
 </select>
 
-  <input id="match-${i}" type="number" placeholder="Match Points" value="${match}">
+
+
+
+
+
+
+<input id="match-${i}" type="number" value="${match}" placeholder="نقاط المباراة">
+
+
+
+
+
 `;
+
+
+
+
+
+
 
 container.appendChild(div);
 
-});
+
+
+
+
+
+changeAttendanceColor(
+
+document.getElementById(`attendance-${i}`)
+
+);
+
+
+
+
+
+
+
+changeWorkColor(
+
+document.getElementById(`work-${i}`)
+
+);
+
+
+
+
+
 
 });
+
+
+
+});
+
+
 
 }
-window.onload = function(){
-  loadStudents();
-};
+
+
+
+
+
+
+
+
+function changeAttendanceColor(select){
+
+
+
+if(select.value=="5"){
+
+
+select.style.background="#64efa8";
+
+
+select.style.color="#065f46";
+
+
+}
+
+
+else if(select.value=="3"){
+
+
+select.style.background="#ffe789";
+
+
+select.style.color="#92400e";
+
+
+}
+
+
+else{
+
+
+select.style.background="#fa8282";
+
+
+select.style.color="#991b1b";
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
 
 function changeWorkColor(select){
 
-  if(select.value == "5"){
 
-    select.style.background = "#64efa8";
-    select.style.color = "#065f46";
 
-  }
+if(select.value=="5"){
 
-  else if(select.value == "0"){
 
-    select.style.background = "#fa8282";
-    select.style.color = "#991b1b";
+select.style.background="#64efa8";
 
-  }
+
+select.style.color="#065f46";
+
 
 }
-function changeAttendanceColor(select){
 
-  if(select.value == "5"){
+else{
 
-    select.style.background = "#64efa8";
-    select.style.color = "#065f46";
 
-  }
+select.style.background="#fa8282";
 
-  else if(select.value == "3"){
 
-    select.style.background = "#ffe789";
-    select.style.color = "#92400e";
+select.style.color="#991b1b";
 
-  }
-
-  else if(select.value == "0"){
-
-    select.style.background = "#fa8282";
-    select.style.color = "#991b1b";
-
-  }
 
 }
 
 
-/* SAVE ALL */
-async function saveAllChanges() {
+}
 
-for(let i = 0; i < students.length; i++) {
 
-const name = students[i][0];
 
-const attendance =
+
+
+
+
+
+
+async function saveAllChanges(){
+
+
+
+for(let i=0;i<students.length;i++){
+
+
+
+const name=students[i][0];
+
+
+
+
+
+const attendance=
+
 Number(document.getElementById(`attendance-${i}`).value);
 
-const work =
+
+
+
+
+const work=
+
 Number(document.getElementById(`work-${i}`).value);
 
-const match =
-Number(document.getElementById(`match-${i}`).value) || 0;
 
-const school =
+
+
+
+const match=
+
+Number(document.getElementById(`match-${i}`).value)||0;
+
+
+
+
+
+
+
+const school=
+
 document.getElementById(`school-${i}`).value;
 
-const project =
+
+
+
+
+const project=
+
 document.getElementById(`project-${i}`).value;
 
+
+
+
+
+
+
 await fetch(
+
+
+
 `${API_URL}?action=update`
-+ `&name=${encodeURIComponent(name)}`
-+ `&attendance=${attendance}`
-+ `&work=${work}`
-+ `&match=${match}`
-+ `&school=${encodeURIComponent(school)}`
-+ `&project=${encodeURIComponent(project)}`
+
++`&name=${encodeURIComponent(name)}`
+
++`&attendance=${attendance}`
+
++`&work=${work}`
+
++`&match=${match}`
+
++`&school=${encodeURIComponent(school)}`
+
++`&project=${encodeURIComponent(project)}`
+
+
+
 );
 
+
+
+
+
 }
 
-alert("Saved!");
+
+
+
+
+
+
+alert("تم الحفظ!");
+
+
+
 loadStudents();
 
-}
-/* ADD STUDENT */
-function addStudent() {
 
-const name =
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function addStudent(){
+
+
+
+const name=
+
 document.getElementById("newName").value.trim();
 
-const school =
-document.getElementById("newSchool").value.trim();
 
-const project =
-document.getElementById("newProject").value.trim();
+
+
 
 if(!name){
-alert("Enter a name");
+
+
+alert("اكتب اسم الطالب");
+
+
 return;
+
+
 }
+
+
+
+
+
+
 
 fetch(
+
+
+
 `${API_URL}?action=update`
-+ `&name=${encodeURIComponent(name)}`
-+ `&attendance=0`
-+ `&work=0`
-+ `&match=0`
-+ `&school=${encodeURIComponent(school)}`
-+ `&project=${encodeURIComponent(project)}`
+
++`&name=${encodeURIComponent(name)}`
+
++`&attendance=0`
+
++`&work=0`
+
++`&match=0`
+
+
+
 )
-.then(() => {
 
-document.getElementById("newName").value = "";
-document.getElementById("newPoints").value = "";
-document.getElementById("newSchool").value = "";
-document.getElementById("newProject").value = "";
+.then(()=>{
+
+
 
 loadStudents();
 
+
+
 });
+
+
+
+
 
 }
 
-fetch(`${API_URL}?action=update&name=${name}&points=${points}&school=${encodeURIComponent(school)}&project=${encodeURIComponent(project)}`)
-.then(() => {
-document.getElementById("newName").value = "";
-document.getElementById("newPoints").value = "";
-document.getElementById("newSchool").value = "";
-document.getElementById("newProject").value = "";
-loadStudents();
-});
 
 
 
-/* LOGOUT */
-function logout() {
+
+
+
+
+function logout(){
+
+
+
 localStorage.removeItem("admin");
-window.location.href = "index.html";
+
+
+window.location.href="index.html";
+
+
+
 }
 
-window.onload = function(){
-  loadStudents();
-};
+
+
+
+
+
+window.onload=loadStudents;
+
+
+
+
 
 </script>
 
+
+
 </body>
+
 </html>
