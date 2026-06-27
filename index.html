@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+
+  <style>
+
+    body {
+      font-family: Arial;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: black;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="box">
+
+    <h1>Login</h1>
+
+    <input
+      id="username"
+      placeholder="Your name">
+
+    <input
+      id="password"
+      type="password"
+      placeholder="Admin password">
+
+    <button onclick="login()">
+      Enter
+    </button>
+
+  </div>
+
+  <script>
+
+    function login() {
+
+      const username =
+        document.getElementById("username").value;
+
+      const password =
+        document.getElementById("password").value;
+
+      // ADMIN
+      if (password === "1234") {
+
+        localStorage.setItem(
+          "admin",
+          "true"
+        );
+
+        window.location.href =
+          "admin.html";
+
+      }
+
+      // STUDENT
+      else {
+
+        localStorage.setItem(
+          "studentName",
+          username
+        );
+
+        window.location.href =
+          "student.html";
+      }
+    }
+
+  </script>
+
+</body>
+</html>
