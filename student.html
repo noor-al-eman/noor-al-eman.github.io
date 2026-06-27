@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard</title>
+
+  <style>
+
+    body {
+      font-family: Arial;
+      background: #111;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 60px;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 40px;
+      color: #00ff99;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="card">
+
+    <h1 id="studentName">
+      Loading...
+    </h1>
+
+    <h2 id="studentPoints">
+      ...
+    </h2>
+
+  </div>
+
+  <script>
+
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbziHTPIKYehe8NEZStkfbh6uWL16TNxnQ9aaa0tXqFM6bpq6hcSupBUg1mIM1EYpnUK/exec";
+
+    const studentName =
+      localStorage.getItem("studentName");
+
+    fetch(API_URL)
+      .then(res => res.json())
+      .then(data => {
+
+        const rows = data.slice(1);
+
+        const student =
+          rows.find(row =>
+            row[0].toLowerCase() ===
+            studentName.toLowerCase()
+          );
+
+        if (student) {
+
+          document
+            .getElementById("studentName")
+            .innerText = student[0];
+
+          const total = student[1];
+const school = student[2];
+const project = student[3];
+const attendance = student[4] || 0;
+const work = student[5] || 0;
+const match = student[6] || 0;
+
+document.getElementById("studentPoints").innerHTML =
+`
+Total: ${total}<br><br>
+
+Attendance: ${attendance}<br>
+Work: ${work}<br>
+Match: ${match}<br><br>
+
+School: ${school}<br>
+Project: ${project}
+`;
+        }
+
+      });
+
+  </script>
+
+</body>
+</html>
